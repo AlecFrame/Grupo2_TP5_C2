@@ -1,10 +1,17 @@
 
 package grupo2_tp5_c2;
 
-public class Ventana extends javax.swing.JFrame {
+import java.util.TreeMap;
+import javax.swing.JOptionPane;
 
-    public Ventana() {
+public class Ventana extends javax.swing.JFrame {
+    TreeMap<Long, Cliente> lista;
+    
+    public Ventana(TreeMap<Long, Cliente> lista) {
         initComponents();
+        this.lista = lista;
+        this.setLocationRelativeTo(this);
+        Desactivar();
     }
 
     @SuppressWarnings("unchecked")
@@ -51,17 +58,42 @@ public class Ventana extends javax.swing.JFrame {
         jLbCiudad.setText("Ciudad:");
 
         jBbuscar.setText("Buscar");
+        jBbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBbuscarActionPerformed(evt);
+            }
+        });
 
         jLbTel.setText("Teléfono:");
 
         jBnuevo.setText("Nuevo");
+        jBnuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBnuevoActionPerformed(evt);
+            }
+        });
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBborrar.setText("Borrar");
+        jBborrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBborrarActionPerformed(evt);
+            }
+        });
 
         jBsalir.setBackground(new java.awt.Color(204, 0, 0));
         jBsalir.setText("Salir");
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,28 +115,27 @@ public class Ventana extends javax.swing.JFrame {
                                     .addComponent(jLbDNI))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jBbuscar))
                                     .addComponent(jTextName, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextDir, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jBnuevo)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jBGuardar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jBborrar))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLbTel)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextTel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 3, Short.MAX_VALUE))
+                                    .addComponent(jTextCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jBnuevo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jBGuardar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jBborrar))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLbTel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextTel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBbuscar))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(289, Short.MAX_VALUE)
                         .addComponent(jBsalir)))
                 .addContainerGap())
         );
@@ -116,8 +147,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLbDNI)
-                    .addComponent(jTextDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBbuscar))
+                    .addComponent(jTextDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLbName)
@@ -139,7 +169,8 @@ public class Ventana extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLbTel)
-                    .addComponent(jTextTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBbuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBnuevo)
@@ -182,6 +213,99 @@ public class Ventana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
+        Activar();
+        Limpiar();
+    }//GEN-LAST:event_jBnuevoActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        try {
+            if (jTextDNI.getText().equalsIgnoreCase("")||
+                        jTextName.getText().equalsIgnoreCase("")||
+                        jTextApellido.getText().equalsIgnoreCase("")||
+                        jTextCiudad.getText().equalsIgnoreCase("")||
+                        jTextDir.getText().equalsIgnoreCase("")    
+                            ) {
+                        JOptionPane.showMessageDialog(this, "Falta rellenar datos","Error",JOptionPane.WARNING_MESSAGE);
+                    }else{
+                Long tel = Long.parseLong(jTextTel.getText());
+                if (!lista.containsKey(tel)) {
+                    String DNI = jTextDNI.getText();
+                    String nombre = jTextName.getText();
+                    String apellido = jTextApellido.getText();
+                    String ciudad = jTextCiudad.getText();
+                    String dir = jTextDir.getText();
+                    Desactivar();
+                    Limpiar();
+                    lista.put(tel, new Cliente(DNI,nombre,apellido,ciudad,dir));
+                }else
+                    JOptionPane.showMessageDialog(this, "El número de teléfono ya existe","Error",JOptionPane.WARNING_MESSAGE);
+            }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "Algunos de los datos son incorrectos","Error",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jBborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBborrarActionPerformed
+            try {
+                Long tel = Long.parseLong(jTextTel.getText());
+                if (lista.containsKey(tel)) {
+                    lista.remove(tel);
+                    JOptionPane.showMessageDialog(this, "Se borro el contacto de la lista");
+                }else
+                    JOptionPane.showMessageDialog(this, "No se encontro el número teléfonico en la lista");
+            } catch(Exception e) {
+                JOptionPane.showMessageDialog(this, "El dato en número de teléfono es incorrecto","Error",JOptionPane.WARNING_MESSAGE);
+            }
+            Limpiar();
+    }//GEN-LAST:event_jBborrarActionPerformed
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBsalirActionPerformed
+
+    private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
+        try {
+                Long tel = Long.parseLong(jTextTel.getText());
+                if (lista.containsKey(tel)) {
+                    Activar();
+                    jTextDNI.setText(lista.get(tel).getDNI());
+                    jTextName.setText(lista.get(tel).getNombre());
+                    jTextApellido.setText(lista.get(tel).getApellido());
+                    jTextCiudad.setText(lista.get(tel).getCiudad());
+                    jTextDir.setText(lista.get(tel).getDireccion());
+                }else
+                    JOptionPane.showMessageDialog(this, "No se encontro el número teléfonico en la lista");
+            } catch(Exception e) {
+                JOptionPane.showMessageDialog(this, "El dato en número de teléfono es incorrecto","Error",JOptionPane.WARNING_MESSAGE);
+            }
+    }//GEN-LAST:event_jBbuscarActionPerformed
+    
+    public void Desactivar() {
+        jTextDNI.setEnabled(false);
+        jTextName.setEnabled(false);
+        jTextApellido.setEnabled(false);
+        jTextDir.setEnabled(false);
+        jTextCiudad.setEnabled(false);
+        jBGuardar.setEnabled(false);
+    }
+    public void Activar() {
+        jTextDNI.setEnabled(true);
+        jTextName.setEnabled(true);
+        jTextApellido.setEnabled(true);
+        jTextDir.setEnabled(true);
+        jTextCiudad.setEnabled(true);
+        jBGuardar.setEnabled(true);
+    }
+    public void Limpiar() {
+        jTextDNI.setText("");
+        jTextName.setText("");
+        jTextApellido.setText("");
+        jTextDir.setText("");
+        jTextCiudad.setText("");
+        jTextTel.setText("");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBborrar;
