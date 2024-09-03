@@ -88,6 +88,8 @@ public class Ventana extends javax.swing.JFrame {
         });
 
         jBsalir.setBackground(new java.awt.Color(204, 0, 0));
+        jBsalir.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jBsalir.setForeground(new java.awt.Color(255, 255, 255));
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +137,7 @@ public class Ventana extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBbuscar))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(289, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBsalir)))
                 .addContainerGap())
         );
@@ -251,9 +253,9 @@ public class Ventana extends javax.swing.JFrame {
                 Long tel = Long.parseLong(jTextTel.getText());
                 if (lista.containsKey(tel)) {
                     lista.remove(tel);
-                    JOptionPane.showMessageDialog(this, "Se borro el contacto de la lista");
+                    JOptionPane.showMessageDialog(this, "Se borró el contacto de la lista");
                 }else
-                    JOptionPane.showMessageDialog(this, "No se encontro el número teléfonico en la lista");
+                    JOptionPane.showMessageDialog(this, "No se encontró el número telefónico en la lista");
             } catch(Exception e) {
                 JOptionPane.showMessageDialog(this, "El dato en número de teléfono es incorrecto","Error",JOptionPane.WARNING_MESSAGE);
             }
@@ -275,7 +277,7 @@ public class Ventana extends javax.swing.JFrame {
                     jTextCiudad.setText(lista.get(tel).getCiudad());
                     jTextDir.setText(lista.get(tel).getDireccion());
                 }else
-                    JOptionPane.showMessageDialog(this, "No se encontro el número teléfonico en la lista");
+                    JOptionPane.showMessageDialog(this, "No se encontró el número telefónico en la lista");
             } catch(Exception e) {
                 JOptionPane.showMessageDialog(this, "El dato en número de teléfono es incorrecto","Error",JOptionPane.WARNING_MESSAGE);
             }
